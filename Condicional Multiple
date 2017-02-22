@@ -1,0 +1,58 @@
+// CondicionalMultiple.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+//22-02-2017
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main ()
+{
+	int op;
+	float base, altura, area;
+	cout<< "****MENU****" <<endl;
+	cout<< "1. Area Cuadrado" <<endl;
+	cout<< "2. Area triangulo" <<endl;
+	cout<< "3. Area Rectangulo" <<endl;
+	cout<< "0. Salir" <<endl;
+	cin>> op ;
+	switch (op) 
+	{
+	case 1:{
+				cout<< "Ingrese la base: " <<endl;
+				cin>> base;
+				area = powf(base,2);
+				cout<< "El area del cuadrado es: " <<area;
+				break;
+		   }
+	case 2:{
+				cout<< "Ingrese la base: " <<endl;
+				cin>> base;
+				cout<< "ingrese la altura: " <<endl;
+				cin>> altura;
+				area = (base*altura)/2;
+				cout<< "El area del triangulo es: " <<area;
+				break;
+		   }
+	case 3:{
+				cout<< "Ingrese la base: " <<endl;
+				cin>> base;
+				cout<< "ingrese la altura: " <<endl;
+				cin>> altura;
+				area = base*altura;
+				cout<< "El area del rectangulo es: " <<area;
+				break;
+		   }
+	case 0:{
+				cout<< "Gracias, vuelva pronto! :)"<<endl;
+				break;
+		   }
+	default:	cout<< "Opcion invalida!" <<endl;
+
+	}
+
+	getch ();
+}
