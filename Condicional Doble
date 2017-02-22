@@ -1,0 +1,35 @@
+// CondicionalDoble.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+//22-02-2017
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main ()
+{
+	int edad, genero, hijos;
+	cout<< "Ingrese su edad: " <<endl;
+	cin>> edad;
+	cout<< "Ingrese su genero, 1 para masculino y 2 para femenino: " <<endl;
+	cin>> genero;
+	if (genero==1)
+	{
+		if (edad>=65)
+			cout<< "Usted puede jubilarse! :)" <<endl;
+		else
+			cout<< "Usted no puede jubilarse :(" <<endl;
+	}
+	if (genero==2)
+	{
+		cout<< "Ingrese cantidad de hijos: " <<endl;
+		cin>> hijos;
+		if (edad>=(60-hijos))
+			cout<< "Usted puede jubilarse :(" <<endl;
+		else
+			cout<< "Usted no puede jubilarse! :)" <<endl;
+	}
+	getch ();
+}
