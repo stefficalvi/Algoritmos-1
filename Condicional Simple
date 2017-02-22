@@ -1,0 +1,19 @@
+// CondicionalSimple.cpp : Defines the entry point for the console application.
+// Steffi Calvi.
+//22-02-2017.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void main ()
+{
+	int edad;
+	cout<< "Ingrese su edad: " <<endl;
+	cin>> edad ;
+	if (edad>=18)
+		cout<< "Usted se encuentra habilitado para votar! :)" <<endl;
+	getch ();
+}
