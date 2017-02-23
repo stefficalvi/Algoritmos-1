@@ -1,0 +1,37 @@
+// Construir un algoritmo que resuelva una ecuación cuadrática de la forma ax2 + bx + c =0. El programa debe hallar las soluciones reales x1 y x2, a partir de los datos a, b, c.
+// Steffi Calvi
+//22-02-2017
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main ()
+{
+	//int a,b,c,raizinterna;
+	float a,b,c,raizinterna,primerasolucion, segundasolucion;
+	cout<< "Ecuacion cuadratica de la forma ax^2 + bx + c = 0" <<endl;
+	cout<< "Ingrese un valor para a: " <<endl;
+	cin>> a ;
+	cout<< "Ingrese un valor para b: " <<endl;
+	cin>> b ;
+	cout<< "Ingrese un valor para c: " <<endl;
+	cin>> c ;
+	raizinterna = (pow(b,2) - 4*a*c);
+	if (raizinterna<0)
+		cout<< "La ecuacion no tiene solucion real" <<endl;
+	else
+	{
+		primerasolucion = (-b + sqrt(raizinterna))/(2*a);
+		segundasolucion = (-b - sqrt(raizinterna))/(2*a);
+		if (primerasolucion==segundasolucion)
+			cout<< "La solucion unica es: "<<primerasolucion;
+		else
+			cout<< "La primera solucion es: "<<primerasolucion;
+			cout<< "La segunda solucion es: "<<segundasolucion;
+	}
+	getch ();
+}
