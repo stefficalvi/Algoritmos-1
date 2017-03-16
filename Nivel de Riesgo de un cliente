@@ -1,0 +1,52 @@
+// Primer_examen_parcial.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+//Pregunta #1
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+int riesgo(int sueldo, int tieneHistorial, int moroso, int hipoteca); //PROTOTIPO
+
+using namespace std;
+
+void main ()
+{
+	int sueldo, tieneHistorial, moroso, hipoteca, nivelriesgo;
+	cout<< "Por favor ingrese su sueldo, en euros: " <<endl;
+	cin>> sueldo;
+	cout<< "Si tiene historial digite 1, si no, digite 2: " <<endl;
+	cin>> tieneHistorial;
+	cout<< "Por favor ingrese cuanto paga al mes de hipoteca: " <<endl;
+	cin>> hipoteca;
+	if (tieneHistorial == 1)
+		cout<< "Si se ha retrasado en algun pago digite 1, si no, digite 2: " <<endl;
+		cin>> moroso;
+	nivelriesgo = riesgo(sueldo, tieneHistorial, moroso, hipoteca);
+	cout<< "El nivel de riesgo del prestamo solicitado por el cliente, sabiendo que 1 es Riesgo Alto, 2 Riesgo medio y 3 Riesgo bajo sera: " << nivelriesgo <<endl;
+	getch ();
+}
+
+//funciones
+
+int riesgo(int sueldo, int tieneHistorial, int moroso, int hipoteca)
+{
+	if (tieneHistorial == 1)
+	{
+		if (moroso == 1)
+			return 1;
+		else 
+			if (hipoteca < (sueldo*0.2))
+				return 2;
+	}
+	else
+	{
+		if (hipoteca > (sueldo + (sueldo*0.3)))
+			return 1;
+		else 
+			if ( hipoteca < (sueldo*0.2))
+				return 2;
+			else 
+				return 3;
+	}
+}
