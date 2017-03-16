@@ -1,0 +1,83 @@
+// Primer_examen_parcial.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+//Pregunta #3
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+int discriminante(int a, int b, int c);
+float ecuacioncuadratica(int a, int b, float internodisc);
+float ecuacioncuadratica2(int a, int b, float internodisc);
+
+void main ()
+{
+	int a, b, c;
+	float x,x1,z,m,internodisc;
+	cout<< "Para la ecuacion cuadratica del tipo 'ax^2 + bx + c = 0':"<<endl;
+	cout<< "Ingrese un valor para 'a': " <<endl;
+	cin>> a;
+	cout<< "Ingrese un valor para 'b': " <<endl;
+	cin>> b;
+	cout<< "Ingrese un valor para 'c': " <<endl;
+	cin>> c;
+	internodisc= discriminante(a, b, c);
+	if (a!=0)
+	{
+		if (internodisc >= 0)
+		{
+			if (internodisc == 0)
+			{
+				x= -b / (2*a);
+				cout<< "La solucion unica sera: "<< x <<endl;
+			}
+			else
+			{
+				x= ecuacioncuadratica(a,b,internodisc);
+				x1= ecuacioncuadratica2(a,b,internodisc);
+				cout<< "Solucion 1: "<< x << endl;
+				cout<< "Solucion 2: "<< x1 << endl;
+			}
+		}
+		else
+		{
+			z = -b / (2*a);
+			m= sqrt(-internodisc)/ (2*a);
+			cout<< "Solucion 1:" << z <<"+" << m <<"i" <<endl;
+			cout<< "Solucion 2:" << z <<"-" << m <<"i" <<endl;
+		}
+	}
+	else
+		cout<< "Por favor ingrese un valor para 'a' distinto de cero" <<endl;
+	getch ();
+}
+
+//funciones
+
+int discriminante(int a, int b, int c)
+{
+	int d,p=1;
+	for(int i=1; i<=2; i++)
+	{
+		p=p*b;
+	}
+	d= p - 4*(a*c);
+	return d;
+}
+
+float ecuacioncuadratica(int a, int b, float internodisc)
+{
+	float c;
+	c = (-b + sqrt(internodisc))/ (2*a);
+	return c;
+}
+
+float ecuacioncuadratica2(int a, int b, float internodisc)
+{
+	float c;
+	c = (-b - sqrt(internodisc))/ (2*a);
+	return c;
+}
