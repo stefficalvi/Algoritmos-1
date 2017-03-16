@@ -1,0 +1,32 @@
+// Primer_examen_parcial.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+//Pregunta #2
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main ()
+{
+	int n,x;
+	float m,S=0;
+	cout<< "Ingrese un valor para n: " <<endl;
+	cin>> n;
+	cout<< "Ingrese un valor para x: " <<endl;
+	cin>> x;
+	if (n>0 && x>0)
+	{
+		m = 1 + (1.0/x);
+		for (int i=1; i<=n; i++)
+		{
+			S = S + pow(m,i);
+		}
+		cout<< "El resultado de la serie sera: " << S <<endl;
+	}
+	else
+		cout<< "Por favor ingrese valores enteros positivos!" <<endl;
+	getch ();
+}
