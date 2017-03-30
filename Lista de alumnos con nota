@@ -1,0 +1,74 @@
+// ParallelArrays.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+// Pedir nombre y nota, colocar un letrero, mostrar la lista y los tres mejores
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+
+#define MAX 20
+
+using namespace std;
+
+void cargarvectors(string alumnos[], int notas[], int n);
+void burbuja(int notas[], string alumnos[], int n);
+void mostrarvectori(int notas[], string alumnos[], int n);
+
+
+void main()
+{
+	int n, notas[MAX];
+	string alumnos[MAX];
+	do{
+		cout<< "Introduzca el tamaño del vector: "<<endl;
+		cin>> n;
+	}while(n<=0 || n>MAX);
+	cargarvectors(alumnos,notas,n);
+	mostrarvectori(notas,alumnos,n);
+	burbuja(notas,alumnos,n);
+	cout<<"\n Las tres mejores notas"<<endl;
+	mostrarvectori(notas,alumnos,3);
+	getch ();
+}
+
+void cargarvectors(string alumnos[], int notas[], int n)
+{
+	int i;
+	cin.ignore(); // Para que no tenga problema el cin
+	for(i=0; i<n; i++)
+	{
+		cout<< "Ingrese alumnos["<<i<<"]:";
+		getline(cin, alumnos[i]);
+		cout<< "Ingrese nota["<<i<<"]:";
+		cin>>notas[i];
+		cin.ignore();
+	}
+}
+
+void burbuja(int notas[], string alumnos[], int n)
+{
+	//Descendente
+	int i,j,notasaux;
+	string alumnosaux;
+	for (i=0; i<(n-1); i++)
+		for(j=i+1; j<n; j++)
+			if(notas[i]<notas[j])
+			{
+				notasaux=notas[j];
+				notas[j]=notas[i];
+				notas[i]=notasaux;
+				alumnosaux=alumnos[j];
+				alumnos[j]=alumnos[i];
+				alumnos[i]=alumnosaux;
+			}
+}
+
+void mostrarvectori(int notas[], string alumnos[], int n)
+{
+	int i;
+	cout<<"Nombre"<<"\t"<<"Nota"<<endl;
+	for (i=0; i<n; i++)
+		cout<<alumnos[i]<<"\t"<<notas[i]<<endl;  //Tabulador
+}
+
