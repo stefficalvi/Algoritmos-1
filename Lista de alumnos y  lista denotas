@@ -1,0 +1,88 @@
+// ParallelArrays.cpp : Defines the entry point for the console application.
+// Steffi Calvi
+// Un vector tiene la lista de alumnos y otro vector tiene las notas. Hacer un programa para obtener las tres mejores notas. 
+// Sugerencia: Clasificar el vector en orden descendente y luego listar los tres primeros, hay que tener cuidado cuando se intercambia los elementos del vector de alumnos también se debe intercambiar las notas.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+
+#define MAX 20
+
+using namespace std;
+
+void cargarvectori(int notas[], int n);
+void cargarvectors(string alumnos[], int n);
+void burbuja(int notas[], string alumnos[], int n);
+void mostrarvectori(int notas[], string alumnos[], int n);
+
+
+void main()
+{
+	int n, notas[MAX];
+	string alumnos[MAX];
+	do{
+		cout<< "Introduzca el tamaño del vector: "<<endl;
+		cin>> n;
+	}while(n<=0 || n>MAX);
+	cargarvectors(alumnos,n);
+	cargarvectori(notas,n);
+	burbuja(notas,alumnos,n);
+	mostrarvectori(notas,alumnos,n);
+	getch ();
+}
+
+
+/*	
+	->primero cargar vectores
+	->luego ordenar vectores en orden descendente
+	->por ultimo mostrar los tres primeros
+*/
+
+void cargarvectors(string alumnos[], int n)
+{
+	int i;
+	cin.ignore(); // Para que no tenga problema el cin
+	for(i=0; i<n; i++)
+	{
+		cout<< "Ingrese alumnos["<<i<<"]:";
+		getline(cin, alumnos[i]);
+	}
+}
+
+void cargarvectori(int notas[], int n)
+{
+	int i;
+	for(i=0; i<n; i++)
+	{
+		cout<< "Ingrese nota["<<i<<"]:";
+		cin>>notas[i];
+	}
+}
+
+
+void burbuja(int notas[], string alumnos[], int n)
+{
+	//Descendente
+	int i,j,notasaux;
+	string alumnosaux;
+	for (i=0; i<(n-1); i++)
+		for(j=i+1; j<n; j++)
+			if(notas[i]<notas[j])
+			{
+				notasaux=notas[j];
+				notas[j]=notas[i];
+				notas[i]=notasaux;
+				alumnosaux=alumnos[j];
+				alumnos[j]=alumnos[i];
+				alumnos[i]=alumnosaux;
+			}
+}
+
+void mostrarvectori(int notas[], string alumnos[], int n)
+{
+	int i;
+	for (i=0; i<3; i++)
+		cout<<alumnos[i]<<"\t"<<notas[i]<<endl;  //Tabulador
+}
