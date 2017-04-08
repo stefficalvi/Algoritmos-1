@@ -8,25 +8,29 @@
 
 using namespace std;
 
-void longitudstring(string nombre);
-void compararcadena(string nombre,string var2);
+void longitudstring(string nombre, int longitud);
+void compararcadena(string nombre);
 void elementosindividuales(string nombre, int longitud,int cont);
 void elementosindividualesat(string nombre,int longitud,int cont);
-void extraerunaparte(string nombre,int pos, int longitud);
-void intercambiovariable(string nombre);
-void encuentracaracteres(string nombre);
-void invertirfrase(string nombre, char aux);
-void quitarvocal(string nombre);
+void extraerunaparte(string nombre, int longitud);
+void intercambiovariable(string nombre,string var2);
+void encuentracaracteres(string var2,int longitud);
+void invertirfrase(string nombre, int longitud);
+void quitarvocal(string nombre,int cont, int longitud);
 
 void main()
 {
-	int longitud,cont,pos,op;
-	char aux;
-	string var1, var2, nombre; //Declarar strings
+	int longitud,cont=0,op;
+	string var2, nombre; //Declarar strings
 	cout<<"ingrese un nombre: "<<endl;
 	getline(cin,nombre);
+	cout<<"ingrese otro nombre: "<<endl;
+	getline(cin, var2);
+	cout << "nombre1: " << nombre << "     nombre2: " << var2;
+	longitud=nombre.length();
+	cout<<endl;
 	do{
-
+		cout<<"*****CHRISTIAN ES HERMOSO*****"<<endl;
 		cout<<"*****MENU*****"<<endl;
 		cout<<"1. Ejemplo de uso de length para determinar la longitud de un strings"<<endl;
 		cout<<"2. Ejemplo de uso de compare para determinar si dos cadenas son iguales"<<endl;
@@ -43,57 +47,54 @@ void main()
 		switch(op)
 		{
 		case 1:
-			longitudstring(nombre);break;
+			longitudstring(nombre, longitud);break;
 		case 2:
-			compararcadena(nombre, var2);break;
+			compararcadena(nombre);break;
 		case 3:
 			elementosindividuales(nombre,longitud,cont);break;
 		case 4:
 			elementosindividualesat(nombre,longitud,cont);break;
 		case 5:
-			extraerunaparte(nombre);break;
+			extraerunaparte(nombre,longitud);break;
 		case 6:
-			intercambiovariable(nombre);break;
+			intercambiovariable(nombre,var2);break;
 		case 7:
-			encuentracaracteres(nombre);break;
+			encuentracaracteres(var2,longitud);break;
 		case 8:
-			invertirfrase(nombre,aux);break;
+			invertirfrase(nombre,longitud);break;
 		case 9:
-			quitarvocal(nombre);break;
+			quitarvocal(nombre,cont,longitud);break;
 		case 0:
-			cout<<"Salir";break;
+			cout<<"MORIRAS EN 7 DIAS...";break;
 		default:
 			cout<<"ERROR";break;
 		}
 		getch ();
 		system ("cls");
 	}while(op!=0);
-	getch ();
 }
-				
-
-	
-	void longitudstring(string nombre)
+					
+	void longitudstring(string nombre, int longitud)
 	{
-		int longitud;
 		longitud=nombre.length();
 		cout <<endl<<"El string tiene: "<<longitud;
 	}
 
-	void compararcadena(string nombre, string var2)
+	void compararcadena(string nombre)
 	{
-		cout<<endl<<"Redigite el nombre: ";
+		string var2;
+		cout<<endl<<"Redigite el nombre: "<< endl;
+		cin.ignore ();
 		getline(cin,var2);
+		
 		if (nombre.compare(var2) == 0 )
 			cout<<endl<<"Los datos coinciden"<<endl;
 		else 
 			cout << nombre << " es diferente que "<<var2 << " :1"<<endl;
 	}
-	
 		
 	void elementosindividuales(string nombre,int longitud,int cont)
 	{
-		cont=0;
 		cout<<endl<<"Ejemplo de uso de elementos individuales: "<<endl;
 		cout<<endl<<"Contar vocales"<<endl<<endl;
 		for (int i=0;i<longitud;i++)
@@ -104,48 +105,41 @@ void main()
 	
 	void elementosindividualesat(string nombre,int longitud,int cont)
 	{
-		cont=0;
 		for (int i=0;i<longitud;i++)
 			if (nombre.at(i)=='a' || nombre.at(i)=='e'||nombre.at(i)=='i'||nombre.at(i)=='o'||nombre.at(i)=='u')
 				cont++;
 		cout<<"Numero de vocales: "<<cont<<endl;
 	}
-
 	
-	void extraerunaparte(string nombre,int pos, int longitud)
+	void extraerunaparte(string nombre, int longitud)
 	{
+		int pos=0;
 		cout<<endl<<"Ingrese desde donde desea extraer el sbstring: ";
 		cin>>pos;
 		cout <<nombre.substr(pos,longitud-pos);
 		cin.ignore();
 	}
 
-	void intercambiovariable(string nombre)
+	void intercambiovariable(string nombre,string var2)
 	{
-		string var2;
 		nombre.swap(var2);
-		cout << nombre;
+		cout << nombre << endl;
 		cout << var2;
 	}
 
-	void encuentracaracteres(string nombre)
+	void encuentracaracteres(string var2,int longitud)
 	{
-		int longitud;
-		string var2;
-		cout << var2.find(' ');
+		var2.find(' ');
 		longitud=var2.length();
 		for (int i=0;i<longitud;i++)
 			if (var2.at(i)==' ' )
 				cout << endl<<"Existe un espacio en: "<<i;
 	}
 
-	void invertirfrase(string nombre,char aux)
+	void invertirfrase(string nombre,int longitud)
 	{
-		int longitud;
-		string var2;
-		getline(cin,nombre);
-		var2=nombre;
-		longitud=nombre.length();
+		char aux;
+		string pal=nombre;
 		for (int i=0;i<longitud/2;i++)
 		{
 			aux=nombre[i];
@@ -153,23 +147,22 @@ void main()
 			nombre[longitud-1-i]=aux;
 		}
 		cout <<"La cadena invertida es: "<< nombre<<endl;
-		if (var2.compare(nombre)==0)
+		if (pal.compare(nombre)==0)
 			cout<<"Es un palindromo";
 	}
 
-	void quitarvocal(string nombre)
+	void quitarvocal(string nombre,int cont, int longitud)
 	{
-		int cont=0, longitud;
-		string var2;
-		var2=nombre;
-		longitud=nombre.length();
+		string var;
+		var = nombre;
 		for (int i=0;i<longitud;i++)
 			if (nombre[i]!='a' && nombre[i]!='e'&& nombre[i]!='i'&& nombre[i]!='o'&& nombre[i]!='u')
 			{
-				var2[cont]=nombre[i];
+				var[cont]=nombre[i];
 				cont++;
 			}
-		cout<<"Sin vocales es: "<<var2;
+			
+		cout<<"Sin vocales es: "<<var.substr(0,cont);;
 		getch();
 	}
 
