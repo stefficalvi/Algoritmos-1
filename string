@@ -30,7 +30,6 @@ void main()
 	longitud=nombre.length();
 	cout<<endl;
 	do{
-		cout<<"*****CHRISTIAN ES HERMOSO*****"<<endl;
 		cout<<"*****MENU*****"<<endl;
 		cout<<"1. Ejemplo de uso de length para determinar la longitud de un strings"<<endl;
 		cout<<"2. Ejemplo de uso de compare para determinar si dos cadenas son iguales"<<endl;
@@ -65,7 +64,7 @@ void main()
 		case 9:
 			quitarvocal(nombre,cont,longitud);break;
 		case 0:
-			cout<<"MORIRAS EN 7 DIAS...";break;
+			cout<<"SALIR...";break;
 		default:
 			cout<<"ERROR";break;
 		}
