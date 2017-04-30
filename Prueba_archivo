@@ -1,0 +1,109 @@
+// PRIMER_prueba_archivo.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h" //se usa para limpiar la pantalla
+
+void ALTA_SECUENCIAL(void) ;                                                   
+void LISTADO_SECUENCIAL(void) ;
+
+using namespace std;
+
+struct tipo_registro
+{ 
+    int no_prod; 
+    string descrip; 
+    int cantidad; 
+    float precio; 
+    char garantia; 
+}; 
+
+tipo_registro Registro; //variables globales
+FILE *alias;            //varibles globales
+
+void main ()
+{
+    ALTA_SECUENCIAL() ;                                                   
+    LISTADO_SECUENCIAL() ;
+    getch ();
+}
+
+//funciones
+
+void ALTA_SECUENCIAL() 
+{ 
+    int no_prod;  // Variable local para el numero de producto 
+    cout << "\n\rALTAS DE REGISTROS DE PRODUCTOS"; 
+    alias=fopen("PRODUCTO.SEC","rb+"); // Intenta abrir el archivo  
+                                     // en modo de lectura/escritura 
+    if(alias==NULL) 
+        alias=fopen("PRODUCTO.SEC","wb"); // Crea el archivo en caso de no existir 
+
+    cout << "\n\n\n\rNumero de producto: "; 
+    cin >> no_prod; 
+    fread(&Registro,sizeof(Registro),1,alias); 
+    // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias" 
+    while(!feof(alias)) // Ciclo mientras no se encuentre el final del 
+                      // archivo 
+    { 
+        if(Registro.no_prod==no_prod) 
+        { 
+            cout << "\n\n\n\rRegistro duplicado !!!"; 
+            fclose(alias); 
+            getch(); 
+            return; 
+        } 
+        fread(&Registro,sizeof(Registro),1,alias); 
+    } 
+    cout << "\n\rDescripcion: "; 
+    cin.ignore ();
+    getline(cin,Registro.descrip);
+    cout << "\n\rCantidad   : "; 
+    cin >> Registro.cantidad; 
+    cout << "\n\rPrecio     : "; 
+    cin >> Registro.precio; 
+    do 
+    { 
+        cout << "\n\rGarantia   : ";
+        cin>>Registro.garantia;
+    }while(Registro.garantia!='S' && Registro.garantia!='N'); 
+    Registro.no_prod=no_prod; 
+    fwrite(&Registro,sizeof(Registro),1,alias); // Grabar el Registro  
+    fclose(alias); // Cierra el archivo
+    cout << "\n\n\n\rProducto registrado !!!"; 
+    cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
+    getch(); 
+    return; 
+} 
+
+void LISTADO_SECUENCIAL(void) 
+{ 
+    system ("cls");
+    cout << "\n\rLISTADO DE REGISTROS DE PRODUCTOS"; 
+    alias=fopen("PRODUCTO.SEC","rb"); // Intenta abrir el archivo PRODUCTO.SEC en modo de solo lectura 
+    if(alias==NULL) 
+    { 
+        cout << "\n\n\n\rNo existe el archivo !!!"; 
+        cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
+        getch(); 
+        return; 
+    } 
+    cout << "\n\rN° Prod       Descripcion    Cantidad        Precio  Garantia"; 
+    cout << "\n\r------------------------------------------------------------------------" << endl; 
+    fread(&Registro,sizeof(Registro),1,alias); 
+    // Lee el "Registro", de tamano=sizeof(Registro) del archivo "alias"
+    while(!feof(alias)) // Ciclo mientras no se encuentre el final del archivo 
+    { 
+        cout<<Registro.no_prod<< "\t" <<Registro.descrip<< "\t"<<Registro.cantidad<< "\t"<<Registro.precio<< "\t"<< Registro.garantia << endl;
+        fread(&Registro,sizeof(Registro),1,alias); 
+    } 
+    fclose(alias); // Cierra el archivo 
+    cout << "\n\r-----------------------------------------------------------------------"; 
+    cout << "\n\rFin del listado !!!"; 
+    cout << "\n\r<<< Oprima cualquier tecla para continuar >>>"; 
+    getch(); 
+return; 
+}
