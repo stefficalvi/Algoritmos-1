@@ -1,0 +1,1086 @@
+main.cpp
+#include "Estructuras_Menus.h"
+#include "Materia.h"
+#include "Docente.h"
+#include "Estudiante.h"
+
+char verificaropcion()
+{
+	char Opcion[5], opcion;
+	int a, b;
+	bool k = false;
+
+	do
+	{
+		do
+		{
+			cin >> Opcion;
+			a = strlen(Opcion);
+			if (a > 1)
+			{
+				cout << "Opcion invalida intente de nuevo.\n";
+			}
+		} while (a > 1);
+
+		b = Opcion[0];
+		if (b > 47 && b < 58)
+		{
+			k = true;
+		}
+		else
+		{
+			cout << "Opcion invalida intente de nuevo.\n";
+		}
+	} while (k == false);
+
+	opcion = Opcion[0];
+	return(opcion);
+}
+
+int main()
+{
+	char opcion, opcion1, opcion2, opcion3, opcion3_1, opcion4;
+	int nroReg, nroMat;
+
+	do
+	{
+		menu1();
+		opcion = verificaropcion();
+		switch (opcion)
+		{
+		case '1':
+		{
+			system("cls");
+			do
+			{
+				menuInscripcion();
+				opcion1 = verificaropcion();
+
+				if (opcion1 == '1')
+				{
+					//crearArchProyecto();
+					_getch();
+				}
+				else if (opcion1 == '2')
+				{
+					system("cls");
+					addregistroEstudiante();
+					_getch();
+				}
+				
+				fflush(stdin);
+				cin.clear();
+				system("cls");
+			} while (opcion1 != '0');
+			break;
+		}
+		case '2':
+		{
+			system("cls");
+			do {
+				opcion2 = verificaropcion();
+			
+				fflush(stdin);
+				cin.clear();
+				system("cls");
+			} while (opcion2 != '0');
+			break;
+		}
+
+		case '3':
+		{
+			system("cls");
+			do {
+				menuConfiguración();
+				opcion3 = verificaropcion();
+				if (opcion3 == '1')
+				{
+					system("cls");
+					do
+					{
+						menu();
+						opcion3_1 = verificaropcion();
+						if (opcion3_1 == '1')
+						{
+							system("cls");
+							//crearArchDocente();
+							_getch();
+						}
+						else if (opcion3_1 == '2')
+						{
+							system("cls");
+							crearArchEstudiante();
+							_getch();
+						}
+						else if (opcion3_1 == '3')
+						{
+							system("cls");
+							crearArchMateria();
+							_getch();
+						}
+						fflush(stdin);
+						cin.clear();
+						system("cls");
+							
+					} while (opcion3_1 != '0');
+				}
+				else if (opcion3 == '2')
+				{
+					system("cls");
+					addregistroMateria();
+					_getch();
+				}
+				else if (opcion3 == '3')
+				{
+					system("cls");
+					do
+					{
+						menu();
+						opcion3_1 = verificaropcion();
+						if (opcion3_1 == '1')
+						{
+							system("cls");
+							//mostrarDocente();
+							_getch();
+						}
+						else if (opcion3_1 == '2')
+						{
+							system("cls");
+							mostrarEstudiante();
+							_getch();
+						}
+						else if (opcion3_1 == '3')
+						{
+							system("cls");
+							mostrarMateria();
+							_getch();
+						}
+						fflush(stdin);
+						cin.clear();
+						system("cls");
+
+					} while (opcion3_1 != '0');
+				}
+				else if (opcion3 == '4')
+				{
+					system("cls");
+					do
+					{
+						menu();
+						opcion3_1 = verificaropcion();
+						if (opcion3_1 == '1')
+						{
+							system("cls");
+							//mostrarDocente();
+							_getch();
+						}
+						else if (opcion3_1 == '2')
+						{
+							system("cls");
+							cout << "Diga el ID del Estudiante que desea modificar: ";
+							nroMat = buscarEstudiante();
+							modificarEstudiante(nroMat);
+							_getch();
+						}
+						else if (opcion3_1 == '3')
+						{
+							system("cls");
+							cout << "Diga el ID de la materia que desea modificar: ";
+							nroMat = buscarMateria();
+							modificarMateria(nroMat);
+							_getch();
+						}
+						fflush(stdin);
+						cin.clear();
+						system("cls");
+
+					} while (opcion3_1 != '0');
+				}
+				else if (opcion3 == '5')
+				{
+					system("cls");
+					do
+					{
+						menu();
+						opcion3_1 = verificaropcion();
+						if (opcion3_1 == '1')
+						{
+							system("cls");
+							//mostrarDocente();
+							_getch();
+						}
+						else if (opcion3_1 == '2')
+						{
+							system("cls");
+							cout << "Diga el ID del Estudiante que desea eliminar: ";
+							nroMat = buscarEstudiante();
+							eliminarEstudiante(nroMat);
+							_getch();
+						}
+						else if (opcion3_1 == '3')
+						{
+							system("cls");
+							cout << "Diga el ID de la materia que desea eliminar: ";
+							nroMat = buscarMateria();
+							eliminarMateria(nroMat);
+							_getch();
+						}
+						fflush(stdin);
+						cin.clear();
+						system("cls");
+
+					} while (opcion3_1 != '0');	
+				}
+				else if (opcion3 == '6')
+				{
+					system("cls");
+					do
+					{
+						menu();
+						opcion3_1 = verificaropcion();
+						if (opcion3_1 == '1')
+						{
+							system("cls");
+							//mostrarDocente();
+							_getch();
+						}
+						else if (opcion3_1 == '2')
+						{
+							system("cls");
+							cout << "Diga el ID del Estudiante que desea buscar: ";
+							buscar_Estudiante();
+							_getch();
+						}
+						else if (opcion3_1 == '3')
+						{
+							system("cls");
+							cout << "Diga el ID de la materia que desea buscar: ";
+							buscar_Materia();
+							_getch();
+						}
+						fflush(stdin);
+						cin.clear();
+						system("cls");
+
+					} while (opcion3_1 != '0');
+				}
+				fflush(stdin);
+				cin.clear();
+				system("cls");
+
+			} while (opcion3 != '0');
+			break;
+		}
+
+		case '4':
+		{
+			system("cls");
+			do {
+
+				opcion4 = verificaropcion();
+				if (opcion4 == '1')
+				{
+			//		Reporte1
+					_getch();
+				}
+				else if (opcion4 == '2')
+				{
+					system("cls");
+			//		Reporte2
+					_getch();
+				}
+				else if (opcion4 == '3')
+				{
+					system("cls");
+			//		Reporte3
+					_getch();
+				}
+
+				system("cls");
+			} while (opcion4 != '0');
+			break;
+		}
+		}
+
+		system("cls");
+	} while (opcion != '0');
+
+	return(0);
+}
+
+
+------------------------------------------------------------------------------------------------------------------
+Estudiante.h
+#pragma once
+//Validaciones
+//Validacion Entero 1, no permite poner otros digitos que no sean numeros,maximo 3 digitos.
+bool validarEnteroE(char numero[])
+{
+	int numeroI;
+	int a = 0, b;
+	bool k;
+
+	a = strlen(numero);
+	if (a == 5)
+	{
+		for (int i = 0; i < a; i++)
+		{
+			b = numero[i];
+			if (b > 47 && b < 58)
+			{
+				k = true;
+			}
+			else
+			{
+				cout << "Error, Dato Invalido. Intente de nuevo.\n";
+				k = false;
+				i = a;
+			}
+		}
+	}
+	else
+	{
+		k = false;
+	}
+
+	return(k);
+}
+//Validacion de id verifica que el id no exista y si el estado es visible (borrado logico).
+bool Validar_Id_Estudiante(char idestudiante[])
+{
+	FILE *ptr;
+	estudiante reg;
+	bool bandera = false;
+	ptr = fopen("Estudiante.dat", "rb");
+	if (ptr != NULL)
+	{
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if ((strcmp(reg.idestudiante, idestudiante) == 0) && (reg.estado == 'N'))
+			{
+				bandera = true;
+			}
+			fread(&reg, sizeof(reg), 1, ptr);
+		}
+	}
+	fclose(ptr);
+	if (bandera == true)
+	{
+		cout << "Error, el ID ya existe. Intente otro.\n";
+	}
+	return(bandera);
+}
+
+//Materia
+//funcion que crea el archivo o sobre-escribe todo el archivo
+void crearArchEstudiante()
+{
+	FILE *ptr;
+	char opcion[5];
+	ptr = fopen("Estudiante.dat", "rb");
+	if (ptr != NULL)
+	{
+		cout << "El archivo ya existe, si continua toda la informacion se borrar,\n"
+			"desea continuar? <s/n>: ";
+		do
+		{
+			cin >> opcion;
+			if (strlen(opcion) > 1)
+			{
+				cout << "Opcion invalida, intente de nuevo.\n";
+			}
+		} while (strlen(opcion) > 1);
+
+		fclose(ptr);
+		if (opcion[0] == 's')
+		{
+			ptr = fopen("Estudiante.dat", "wb");
+			fclose(ptr);
+			cout << "El archivo fue creado Exitosamente!";
+		}
+		else if (opcion[0] == 'n')
+		{
+			cout << "El archivo no ha sido modificado";
+		}
+		else
+		{
+			cout << "Opcion invalida, intente de nuevo.\n";
+			crearArchEstudiante();
+		}
+	}
+	else
+	{
+		ptr = fopen("Estudiante.dat", "wb");
+		fclose(ptr);
+		cout << "El archivo fue creado Exitosamente!";
+	}
+}
+//funcion que añade registros de Estudiante al archivo.
+void addregistroEstudiante()
+{
+	FILE *ptr;
+	estudiante reg;
+
+	cout << "ID Estudiante?	: ";
+	do
+	{
+		gets_s(reg.idestudiante);
+	} while (validarEnteroI(reg.idestudiante) == false || Validar_Id_Estudiante(reg.idestudiante) == true);
+
+	cout << "nombre: ";
+	do
+	{
+		getline(cin, reg.nombre, '\n');
+	} while (validarNombre(reg.nombre) == false);
+
+	cout << "Numero de tarjeta: ";
+	do
+	{
+		gets_s(reg.numero_tarjeta);
+	} while (validarEnteroE(reg.numero_tarjeta) == false);
+
+	reg.estado = 'N';
+	ptr = fopen("Estudiante.dat", "ab");
+	fwrite(&reg, sizeof(reg), 1, ptr);
+	fclose(ptr);
+}
+//funcion que sirve para mostrar los registros guardados en el archivo
+void mostrarEstudiante()
+{
+	FILE *ptr;
+	estudiante reg;
+	ptr = fopen("Estudiante.dat", "rb");
+	if (ptr != NULL)
+	{
+		cout << endl << "==========================================================================";
+		cout << endl << "              << ** LISTADO DE Estudiantes ** >>";
+		cout << endl << "--------------------------------------------------------------------------";
+		cout << endl << "id      Nombre			Numero Tarjeta          ";
+		cout << endl << "--------------------------------------------------------------------------";
+		fread(&reg, sizeof(reg), 1, ptr);
+
+		while (feof(ptr) == false)
+		{
+			if (reg.estado == 'N')
+			{
+				//char *cad;
+				//cad = _strdup(reg.nombre.c_str());
+				cout << endl << left << reg.idestudiante << "|   " << setw(20) << reg.nombre << "|   " << setw(20) << reg.numero_tarjeta;
+			}
+			fread(&reg, sizeof(reg), 1, ptr);
+		}
+		cout << endl << "==========================================================================";
+		fclose(ptr);
+	}
+	else {
+		cout << endl << "Archivo no existe...!!";
+	}
+}
+//funcion que sirve buscar utilizada por eliminar y modificar
+int buscarEstudiante()
+{
+	FILE *ptr;
+	estudiante reg;
+	int contador = 0;
+	char ID[20];
+	bool verificador = false;
+
+	ptr = fopen("Estudiante.dat", "r+b");
+	if (ptr != NULL)
+	{
+		do
+		{
+			gets_s(ID);
+		} while (strlen(ID) == 0);
+
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if (strcmp(reg.idestudiante, ID) == 0 && reg.estado == 'N')
+			{
+				fclose(ptr);
+				return(contador);
+			}
+			else
+			{
+				fread(&reg, sizeof(reg), 1, ptr);
+			}
+			contador++;
+		}
+		contador = -1;
+	}
+	else
+	{
+		cout << "No existe el Archivo";
+	}
+	fclose(ptr);
+	return(contador);
+}
+//funcion que sirve para eliminar un registro a base de un id que proporcione el usuario
+void eliminarEstudiante(int nroReg)
+{
+	FILE *ptr;
+	estudiante reg;
+
+	if (nroReg == -1)
+	{
+		cout << "El archivo no Existe!";
+	}
+	else
+	{
+		ptr = fopen("Estudiante.dat", "r+b");
+		if (ptr != NULL)
+		{
+			fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+			fread(&reg, sizeof(reg), 1, ptr);
+			if (!feof(ptr))
+			{
+				//if (verificarDocenteI(reg.idmateria) == false)
+				{
+					reg.estado = 'S';
+					fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+					fwrite(&reg, sizeof(reg), 1, ptr);
+					cout << "El registro fue eliminado!";
+				}
+			}
+			fclose(ptr);
+		}
+		else
+		{
+			cout << "El Archivo NO existe!";
+		}
+	}
+}
+//funcion que sirve para modificar un registro a base de un id
+void modificarEstudiante(int nroReg)
+{
+	FILE *ptr;
+	estudiante reg;
+
+	if (nroReg == -1)
+	{
+		cout << "El archivo no Existe!";
+	}
+	else
+	{
+		ptr = fopen("Estudiante.dat", "r+b");
+		if (ptr != NULL)
+		{
+			fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+			fread(&reg, sizeof(reg), 1, ptr);
+			if (!feof(ptr))
+			{
+				cout << "nombre: ";
+				do
+				{
+					getline(cin, reg.nombre, '\n');
+				} while (validarNombre(reg.nombre) == false);
+
+				cout << "Numero de tarjeta: ";
+				do
+				{
+					gets_s(reg.numero_tarjeta);
+				} while (validarEnteroE(reg.numero_tarjeta) == false);
+
+				fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+				fwrite(&reg, sizeof(reg), 1, ptr);
+				cout << "El registro fue modificado!";
+			}
+			fclose(ptr);
+		}
+		else
+		{
+			cout << "El Archivo NO existe!";
+		}
+	}
+}
+//funcion que sirve para buscar y visualizar un registros deseado a base de un id
+int buscar_Estudiante()
+{
+	FILE *ptr;
+	estudiante reg;
+	char idestudiante[20];
+
+	ptr = fopen("Estudiante.dat", "r+b");
+	if (ptr != NULL)
+	{
+		do
+		{
+			gets_s(idestudiante);
+		} while (strlen(idestudiante) == 0);
+
+		system("cls");
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if (strcmp(reg.idestudiante, idestudiante) == 0 && reg.estado == 'N')
+			{
+				cout << endl << "==========================================================================";
+				cout << endl << "              << ** LISTADO DE Estudiantes ** >>";
+				cout << endl << "--------------------------------------------------------------------------";
+				cout << endl << "id      Nombre			Numero Tarjeta          ";
+				cout << endl << "--------------------------------------------------------------------------";
+
+　
+　
+				cout << endl << left << reg.idestudiante << "|   " << setw(20) << reg.nombre << "|   " << setw(20) << reg.numero_tarjeta;
+				cout << endl << "==========================================================================";
+				fclose(ptr);
+				return(0);
+			}
+			else
+			{
+				fread(&reg, sizeof(reg), 1, ptr);
+			}
+		}
+		cout << "El registro no Existe.";
+	}
+	else
+	{
+		cout << "No existe el Archivo";
+	}
+	fclose(ptr);
+	return(0);
+}
+
+
+------------------------------------------------------------------------------------------------------------------
+Materia.h
+//Validaciones
+//Validacion Entero 1, no permite poner otros digitos que no sean numeros,maximo 3 digitos.
+bool validarEnteroI(char numero[])
+{
+	int numeroI;
+	int a = 0, b;
+	bool k;
+
+	a = strlen(numero);
+	if (a == 3)
+	{
+		for (int i = 0; i < a; i++)
+		{
+			b = numero[i];
+			if (b > 47 && b < 58)
+			{
+				k = true;
+			}
+			else
+			{
+				cout << "Error, Dato Invalido. Intente de nuevo.\n";
+				k = false;
+				i = a;
+			}
+		}
+	}
+	else
+	{
+		k = false;
+	}
+
+	return(k);
+}
+//Validacion de nombre, no permite poner otros ditigos que no sean letras.
+bool validarNombre(string nombre)
+{
+	int a, b;
+	bool k = false;
+
+	char *cad;
+	cad = _strdup(nombre.c_str());
+
+	a = strlen(cad);
+	for (int i = 0; i < a; i++)
+	{
+		b = cad[i];
+		if (b > 64 && b < 91 || b > 96 && b < 123 || b == 130 || b > 159 && b < 166 || b == 32)
+		{
+			k = true;
+		}
+		else
+		{
+			cout << "Error, Dato Invalido. Por favor introduzca un nombre valido.\n";
+			k = false;
+			i = a;
+		}
+	}
+	return(k);
+}
+//Validacion de id verifica que el id no exista y si el estado es visible (borrado logico).
+bool Validar_Id_Materia(char idmateria[])
+{
+	FILE *ptr;
+	materia reg;
+	bool bandera = false;
+	ptr = fopen("Materia.dat", "rb");
+	if (ptr != NULL)
+	{
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if ((strcmp(reg.idmateria, idmateria) == 0) && (reg.estado == 'N'))
+			{
+				bandera = true;
+			}
+			fread(&reg, sizeof(reg), 1, ptr);
+		}
+	}
+	fclose(ptr);
+	if (bandera == true)
+	{
+		cout << "Error, el ID ya existe. Intente otro.\n";
+	}
+	return(bandera);
+}
+
+//Materia
+//funcion que crea el archivo o sobre-escribe todo el archivo
+void crearArchMateria()
+{
+	FILE *ptr;
+	char opcion[5];
+	ptr = fopen("Materia.dat", "rb");
+	if (ptr != NULL)
+	{
+		cout << "El archivo ya existe, si continua toda la informacion se borrar,\n"
+			"desea continuar? <s/n>: ";
+		do
+		{
+			cin >> opcion;
+			if (strlen(opcion) > 1)
+			{
+				cout << "Opcion invalida, intente de nuevo.\n";
+			}
+		} while (strlen(opcion) > 1);
+
+		fclose(ptr);
+		if (opcion[0] == 's')
+		{
+			ptr = fopen("Materia.dat", "wb");
+			fclose(ptr);
+			cout << "El archivo fue creado Exitosamente!";
+		}
+		else if (opcion[0] == 'n')
+		{
+			cout << "El archivo no ha sido modificado";
+		}
+		else
+		{
+			cout << "Opcion invalida, intente de nuevo.\n";
+			crearArchMateria();
+		}
+	}
+	else
+	{
+		ptr = fopen("Materia.dat", "wb");
+		fclose(ptr);
+		cout << "El archivo fue creado Exitosamente!";
+	}
+}
+//funcion que añade registros de Materia al archivo.
+void addregistroMateria()
+{
+	FILE *ptr;
+	materia reg;
+
+	cout << "ID Materia?	: ";
+	do
+	{
+		gets_s(reg.idmateria);
+	} while (validarEnteroI(reg.idmateria) == false || Validar_Id_Materia(reg.idmateria) == true);
+
+	cout << "nombre: ";
+	do
+	{
+		getline(cin, reg.nombre, '\n');
+	} while (validarNombre(reg.nombre) == false);
+
+	reg.estado = 'N';
+	ptr = fopen("Materia.dat", "ab");
+	fwrite(&reg, sizeof(reg), 1, ptr);
+	fclose(ptr);
+}
+//funcion que sirve para mostrar los registros guardados en el archivo
+void mostrarMateria()
+{
+	FILE *ptr;
+	materia reg;
+	ptr = fopen("Materia.dat", "rb");
+	if (ptr != NULL)
+	{
+		cout << endl << "==========================================================================";
+		cout << endl << "              << ** LISTADO DE materias ** >>";
+		cout << endl << "--------------------------------------------------------------------------";
+		cout << endl << "id      Nombre          ";
+		cout << endl << "--------------------------------------------------------------------------";
+		fread(&reg, sizeof(materia), 1, ptr);
+
+		while (feof(ptr) == false)
+		{
+			if (reg.estado == 'N')
+			{
+				char *cad;
+				cad = _strdup(reg.nombre.c_str());
+				cout << endl << left << reg.idmateria << "|   " << setw(20) << cad;
+			}
+			fread(&reg, sizeof(reg), 1, ptr);
+		}
+		cout << endl << "==========================================================================";
+		fclose(ptr);
+	}
+	else {
+		cout << endl << "Archivo no existe...!!";
+	}
+}
+//funcion que sirve buscar utilizada por eliminar y modificar
+int buscarMateria()
+{
+	FILE *ptr;
+	materia reg;
+	int contador = 0;
+	char ID[20];
+	bool verificador = false;
+
+	ptr = fopen("Materia.dat", "r+b");
+	if (ptr != NULL)
+	{
+		do
+		{
+			gets_s(ID);
+		} while (strlen(ID) == 0);
+
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if (strcmp(reg.idmateria, ID) == 0 && reg.estado == 'N')
+			{
+				fclose(ptr);
+				return(contador);
+			}
+			else
+			{
+				fread(&reg, sizeof(reg), 1, ptr);
+			}
+			contador++;
+		}
+		contador = -1;
+	}
+	else
+	{
+		cout << "No existe el Archivo";
+	}
+	fclose(ptr);
+	return(contador);
+}
+//funcion que sirve para eliminar un registro a base de un id que proporcione el usuario
+void eliminarMateria(int nroReg)
+{
+	FILE *ptr;
+	materia reg;
+
+	if (nroReg == -1)
+	{
+		cout << "El archivo no Existe!";
+	}
+	else
+	{
+		ptr = fopen("Materia.dat", "r+b");
+		if (ptr != NULL)
+		{
+			fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+			fread(&reg, sizeof(reg), 1, ptr);
+			if (!feof(ptr))
+			{
+				//if (verificarDocenteI(reg.idmateria) == false)
+				{
+					reg.estado = 'S';
+					fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+					fwrite(&reg, sizeof(reg), 1, ptr);
+					cout << "El registro fue eliminado!";
+				}
+				/*else
+				{
+					cout << "No se puede eliminar el inversionista porque tiene inversiones.\n";
+				}*/
+			}
+			fclose(ptr);
+		}
+		else
+		{
+			cout << "El Archivo NO existe!";
+		}
+	}
+}
+//funcion que sirve para modificar un registro a base de un id
+void modificarMateria(int nroReg)
+{
+	FILE *ptr;
+	materia reg;
+
+	if (nroReg == -1)
+	{
+		cout << "El archivo no Existe!";
+	}
+	else
+	{
+		ptr = fopen("Materia.dat", "r+b");
+		if (ptr != NULL)
+		{
+			fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+			fread(&reg, sizeof(reg), 1, ptr);
+			if (!feof(ptr))
+			{
+				cout << "nombre: ";
+				do
+				{
+					
+					getline(cin, reg.nombre, '\n');
+				} while (validarNombre(reg.nombre) == false);
+
+				fseek(ptr, nroReg * sizeof(reg), SEEK_SET);
+				fwrite(&reg, sizeof(reg), 1, ptr);
+				cout << "El registro fue modificado!";
+			}
+			fclose(ptr);
+		}
+		else
+		{
+			cout << "El Archivo NO existe!";
+		}
+	}
+}
+//funcion que sirve para buscar y visualizar un registros deseado a base de un id
+int buscar_Materia()
+{
+	FILE *ptr;
+	materia reg;
+	char idmateria[20];
+
+	ptr = fopen("Materia.dat", "r+b");
+	if (ptr != NULL)
+	{
+		do
+		{
+			gets_s(idmateria);
+		} while (strlen(idmateria) == 0);
+
+		system("cls");
+		fread(&reg, sizeof(reg), 1, ptr);
+		while (!feof(ptr))
+		{
+			if (strcmp(reg.idmateria, idmateria) == 0 && reg.estado == 'N')
+			{
+				cout << endl << "==========================================================================";
+				cout << endl << "              << **  materias ** >>";
+				cout << endl << "--------------------------------------------------------------------------";
+				cout << endl << "id      Nombre          ";
+				cout << endl << "--------------------------------------------------------------------------";
+
+　
+　
+				cout << endl << left << reg.idmateria << "|   " << setw(20) << reg.nombre;
+				cout << endl << "==========================================================================";
+				fclose(ptr);
+				return(0);
+			}
+			else
+			{
+				fread(&reg, sizeof(reg), 1, ptr);
+			}
+		}
+		cout << "El registro no Existe.";
+	}
+	else
+	{
+		cout << "No existe el Archivo";
+	}
+	fclose(ptr);
+	return(0);
+}
+
+------------------------------------------------------------------------------------------------------------------
+Estructuras_Menus.h
+#pragma once
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+//Se decide usar Char por temas de validacion, utilizando el metodo de restriccion de rango en sistema ASCII.
+struct docente
+{
+	char iddocente[10];
+	string nombre;
+	char idmateria[10];
+	char precio[10];
+	char hora1[10];
+	char hora2[10];
+	char hora3[10];
+	char numero_tarjeta[10];
+	char estado;
+
+};
+struct estudiante
+{
+	char idestudiante[10];
+	string nombre;
+	char numero_tarjeta[10];
+	char estado;
+};
+struct materia
+{
+	char idmateria[10];
+	string nombre;
+	char estado;
+};
+
+/////////////////////////////////menus///////////////////////////////
+void menu1()
+{
+	cout << endl << "====================================================================";
+	cout << endl << "========================== SIN EXCUSAS =============================";
+	cout << endl << "1.- Inscripcion ";
+	cout << endl << "2.- Ayudantias ";
+	cout << endl << "3.- Configuracion ";
+	cout << endl << "4.- Reportes ";
+	cout << endl << "0.- Salir ";
+	cout << endl << "Opcion: ";
+
+}
+void menuInscripcion()
+{
+	cout << endl << "    ==============================================================   ";
+	cout << endl << "=============================== Inscripcion =============================";
+	cout << endl << "1.- Docente ";
+	cout << endl << "2.- Estudiante ";
+	cout << endl << "0.- Salir ";
+	cout << endl << "Opcion: ";
+}
+void menuConfiguración()
+{
+	cout << endl << "   ====================================================================";
+	cout << endl << "=============================== Configuracion =============================";
+	cout << endl << "1.- Crear Archivo ";
+	cout << endl << "2.- Agregar materia ";
+	cout << endl << "3.- Mostrar  ";
+	cout << endl << "4.- Modificar  ";
+	cout << endl << "5.- Eliminar  ";
+	cout << endl << "6.- Buscar  ";
+	cout << endl << "0.- Salir ";
+	cout << endl << "Opcion: ";
+}
+void menu()
+{
+	cout << endl << "    ==============================================================   ";
+	cout << endl << "1.- Docente ";
+	cout << endl << "2.- Estudiante ";
+	cout << endl << "3.- Materia ";
+	cout << endl << "0.- Salir ";
+	cout << endl << "Opcion: ";
+}
+
+
+------------------------------------------------------------------------------------------------------------------
+Docente.h
+//Todavia no hay nada
